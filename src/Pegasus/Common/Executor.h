@@ -184,7 +184,8 @@ public:
     */
     static int authenticatePassword(
         const char* username,
-        const char* password);
+        const char* password,
+        Boolean isRemoteUser);
 
     /** Check whether the given user is valid for the underlying authentcation
         mechanism.

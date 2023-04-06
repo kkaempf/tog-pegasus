@@ -65,6 +65,7 @@ public:
     virtual AuthenticationStatus authenticate(
         const String& userName,
         const String& password,
+        Boolean isRemoteUser,
         AuthenticationInfo* authInfo) = 0;
 
     /** Construct and return the HTTP Basic authentication challenge header

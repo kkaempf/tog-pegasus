@@ -239,7 +239,7 @@ AuthenticationStatus SecureBasicAuthenticator::authenticate(
         if (Executor::detectExecutor() == 0)
         {
             if (Executor::authenticatePassword(
-                userName.getCString(), password.getCString()) == 0)
+                userName.getCString(), password.getCString(), true) == 0)
             {
                 authenticated = true;
             }

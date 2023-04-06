@@ -48,6 +48,7 @@ const String AuthenticationInfoRep::AUTH_TYPE_COOKIE = "COOKIE";
 AuthenticationInfoRep::AuthenticationInfoRep()
     : _connectionAuthenticated(false),
       _wasRemotePrivilegedUserAccessChecked(false),
+      _isRemoteUser(true),
       _authHandle(),
       _isExpiredPassword(false)
 #ifdef PEGASUS_ENABLE_SESSION_COOKIES
@@ -83,6 +84,16 @@ AuthenticationInfoRep::~AuthenticationInfoRep()
             FileSystem::removeFile(_localAuthFilePath);
         }
     }
+
+    PEG_METHOD_EXIT();
+}
+
+void AuthenticationInfoRep::setRemoteUser(Boolean isRemoteUser)
+{
+    PEG_METHOD_ENTER(TRC_AUTHENTICATION,
+        "AuthenticationInfoRep::setRemoteUser");
+
+    _isRemoteUser = isRemoteUser;
 
     PEG_METHOD_EXIT();
 }

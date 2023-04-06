@@ -634,7 +634,7 @@ static void HandleAuthenticatePasswordRequest(int sock)
 
 #if defined(PEGASUS_PAM_AUTHENTICATION)
 
-        status = PAMAuthenticate(request.username, request.password);
+        status = PAMAuthenticate(request.username, request.password, request.isRemoteUser);
 
         if (status == PAM_SUCCESS)
         {

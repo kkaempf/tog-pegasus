@@ -148,6 +148,13 @@ public:
     }
 #endif //PEGASUS_NEGOTIATE_AUTHENTICATION
 
+    Boolean isRemoteUser() const
+    {
+        return _isRemoteUser;
+    }
+
+    void setRemoteUser(Boolean isRemoteUser);
+
     Array<SSLCertificateInfo*> getClientCertificateChain()
     {
         return _clientCertificate;
@@ -232,6 +239,8 @@ private:
     Boolean _wasRemotePrivilegedUserAccessChecked;
 
     Array<SSLCertificateInfo*> _clientCertificate;
+
+    Boolean _isRemoteUser;
 
     AuthHandle _authHandle;
     String _userRole;

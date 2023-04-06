@@ -73,6 +73,7 @@ public:
     ContentLanguageList contentLanguages;
     Boolean acceptLanguagesDecoded;
     Boolean contentLanguagesDecoded;
+    Boolean isFromRemoteHost;
     CIMException cimException;
     bool binaryResponse;
 

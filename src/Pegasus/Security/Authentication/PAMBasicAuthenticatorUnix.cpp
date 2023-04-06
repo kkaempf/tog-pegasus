@@ -66,6 +66,7 @@ PAMBasicAuthenticator::~PAMBasicAuthenticator()
 AuthenticationStatus PAMBasicAuthenticator::authenticate(
     const String& userName,
     const String& password,
+    Boolean isRemoteUser,
     AuthenticationInfo* authInfo)
 {
     PEG_METHOD_ENTER(TRC_AUTHENTICATION,
@@ -74,7 +75,8 @@ AuthenticationStatus PAMBasicAuthenticator::authenticate(
     int pam_rc =
         Executor::authenticatePassword(
             userName.getCString(),
-            password.getCString());
+            password.getCString(),
+            isRemoteUser);
 
     // return code of -1 will be translated to AUTHSC_UNAUTHORIZED
     AuthenticationStatus authStatus = _getAuthStatusFromPAM_RC(pam_rc);

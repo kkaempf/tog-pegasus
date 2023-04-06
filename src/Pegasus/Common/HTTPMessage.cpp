@@ -133,7 +133,8 @@ HTTPMessage::HTTPMessage(
     authInfo(0),
     acceptLanguagesDecoded(false),
     contentLanguagesDecoded(false),
-    binaryResponse(false)
+    binaryResponse(false),
+    isFromRemoteHost(true)
 {
     if (cimException_)
         cimException = *cimException_;

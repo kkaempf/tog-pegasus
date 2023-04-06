@@ -74,6 +74,7 @@ PAMBasicAuthenticator::~PAMBasicAuthenticator()
 AuthenticationStatus PAMBasicAuthenticator::authenticate(
     const String& userName,
     const String& password,
+    Boolean isRemoteUser,
     AuthenticationInfo* authInfo)
 {
     PEG_METHOD_ENTER(TRC_AUTHENTICATION,

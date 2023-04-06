@@ -431,6 +431,9 @@ void HTTPAuthenticatorDelegator::handleHTTPMessage(
         Tracer::LEVEL3,
         "HTTPAuthenticatorDelegator - Authentication processing start");
 
+    // Let Authenticators know whether this user is Local or Remote:
+    httpMessage->authInfo->setRemoteUser( httpMessage->isFromRemoteHost );
+
     //
     // Handle authentication:
     //

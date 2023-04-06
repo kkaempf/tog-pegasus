@@ -49,6 +49,9 @@
 #include <Executor/Defines.h>
 #include <Executor/Socket.h>
 
+#include <syslog.h>
+typedef bool Boolean;
+
 #ifdef PEGASUS_FLAVOR
 # define PAM_CONFIG_FILE "wbem" PEGASUS_FLAVOR
 #else
@@ -397,7 +400,7 @@ static int PAMValidateUserCallback(
 */
 
 static int PAMAuthenticateInProcess(
-    const char* username, const char* password)
+    const char* username, const char* password, const Boolean isRemoteUser)
 {
     PAMData data;
     struct pam_conv pconv;
@@ -412,24 +415,54 @@ static int PAMAuthenticateInProcess(
     /* intentionally for testing purposes */
     /* return PAM_SERVICE_ERR; */
 
-    pam_rc = pam_start(PAM_CONFIG_FILE, username, &pconv, &handle);
+    // NOTE: if any pam call should log anything, our syslog socket will be redirected
+    //       to the AUTH facility, so we need to redirect it back after each pam call.
 
-    if (pam_rc != PAM_SUCCESS)
+    if ((pam_rc = pam_start(PAM_CONFIG_FILE, username, &pconv, &handle)) != PAM_SUCCESS)
     {
-        return pam_rc;
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_start failed: %s", pam_strerror(handle, pam_rc));
+        syslog(LOG_ERR, "PAM authentication failed for %s user: %s",
+            isRemoteUser ? "remote" : "local", username);
+        return -1;
     }
 
-    pam_rc = pam_authenticate(handle, 0);
-    if (pam_rc != PAM_SUCCESS)
+    if ((pam_rc = pam_set_item(handle, PAM_TTY, isRemoteUser ? "wbemNetwork" : "wbemLocal")) != PAM_SUCCESS)
     {
         pam_end(handle, 0);
-        return pam_rc;
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_set_item(PAM_TTY=wbem) failed: %s", pam_strerror(handle, pam_rc));
+        syslog(LOG_ERR, "PAM authentication failed for %s user: %s",
+            isRemoteUser ? "remote" : "local", username);
+        return -1;
     }
 
-    pam_rc = pam_acct_mgmt(handle, 0);
+    if ((pam_rc = pam_authenticate(handle, 0)) != PAM_SUCCESS)
+    {
+        pam_end(handle, 0);
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_authenticate failed: %s",pam_strerror(handle, pam_rc));
+        syslog(LOG_ERR, "PAM authentication failed for %s user: %s",
+            isRemoteUser ? "remote" : "local", username);
+        return -1;
+    }
+
+    if ((pam_rc = pam_acct_mgmt(handle, 0)) != PAM_SUCCESS)
+    {
+        pam_end(handle, 0);
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_acct_mgmt failed: %s",pam_strerror(handle, pam_rc));
+        syslog(LOG_ERR, "PAM authentication failed for %s user: %s",
+            isRemoteUser ? "remote" : "local", username);
+        return -1;
+    }
 
     pam_end(handle, 0);
-    return pam_rc;
+    return 0;
 }
 
 /*
@@ -452,16 +485,34 @@ static int PAMValidateUserInProcess(const char* username)
     pconv.conv = PAMValidateUserCallback;
     pconv.appdata_ptr = &data;
 
-    pam_rc = pam_start(PAM_CONFIG_FILE, username, &pconv, &phandle);
-    if (pam_rc != PAM_SUCCESS)
+    if ((pam_rc = pam_start(PAM_CONFIG_FILE, username, &pconv, &phandle)) != PAM_SUCCESS)
     {
-        return pam_rc;
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_start() failed: %s", pam_strerror(phandle, pam_rc));
+        return -1;
     }
 
-    pam_rc = pam_acct_mgmt(phandle, 0);
+    if ((pam_rc = pam_set_item(phandle, PAM_TTY, "wbemLocal")) != PAM_SUCCESS)
+    {
+        pam_end(phandle, 0);
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_set_item(PAM_TTY=wbemLocal) failed: %s", pam_strerror(phandle, pam_rc));
+        return -1;
+    }
+
+    if ((pam_rc = pam_acct_mgmt(phandle, 0)) != PAM_SUCCESS)
+    {
+        pam_end(phandle, 0);
+        closelog();
+        openlog("cimserver", LOG_PID, LOG_DAEMON);
+        syslog(LOG_ERR, "pam_acct_mgmt() failed: %s", pam_strerror(phandle, pam_rc));
+        return -1;
+    }
 
     pam_end(phandle, 0);
-    return pam_rc;
+    return 0;
 }
 
 /*
@@ -474,12 +525,12 @@ static int PAMValidateUserInProcess(const char* username)
 **==============================================================================
 */
 
-static int PAMAuthenticate(const char* username, const char* password)
+static int PAMAuthenticate(const char* username, const char* password, const Boolean isRemoteUser)
 {
 #ifdef PEGASUS_USE_PAM_STANDALONE_PROC
     return CimserveraProcessOperation("authenticate", username, password);
 #else
-    return PAMAuthenticateInProcess(username, password);
+    return PAMAuthenticateInProcess(username, password, isRemoteUser);
 #endif
 }
 

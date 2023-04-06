@@ -54,6 +54,7 @@ public:
     AuthenticationStatus authenticate(
         const String& userName,
         const String& password,
+        Boolean isRemoteUser,
         AuthenticationInfo* authInfo);
 
     AuthenticationStatus validateUser(

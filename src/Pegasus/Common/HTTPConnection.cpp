@@ -2295,6 +2295,70 @@ void HTTPConnection::_handleReadEvent()
         message->contentLanguages = contentLanguages;
         message->dest = _outputMessageQueue->getQueueId();
 
+        // Allow authenticators to differentiate Remote and Local users:
+        struct sockaddr_storage sin_peer, sin_svr;
+        socklen_t slen1 = sizeof (struct sockaddr_storage), slen2 = sizeof (struct sockaddr_storage);
+        uint32_t  sock = _socket.get()->getSocket() ;
+        memset(&sin_peer,'\0',slen1);
+        memset(&sin_svr, '\0',slen2);
+        if ( ( ::getpeername( sock, (struct sockaddr*)&sin_peer, &slen1) == 0 )
+           ||( ::getsockname( sock, (struct sockaddr*)&sin_svr,  &slen2) == 0 )
+           )
+        {
+            PEG_TRACE((TRC_HTTP, Tracer::LEVEL4,
+              "sin_peer.ss_family: %d",
+              sin_peer.ss_family));
+            if( sin_peer.ss_family == AF_INET )
+            {
+                struct sockaddr_in *s = (struct sockaddr_in *)&sin_peer;
+                if( ((ntohl( s->sin_addr.s_addr ) >> 24) & 0xff) == 127 )
+                    // message was sent FROM localhost interface
+                    message->isFromRemoteHost = false;
+            }
+            if( sin_peer.ss_family == AF_INET6 )
+            {
+                char straddr[INET6_ADDRSTRLEN];
+                struct sockaddr_in6 *s = (struct sockaddr_in6 *)&sin_peer;
+                static const unsigned char localhost_bytes[] =
+                  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+                inet_ntop(AF_INET6, &s->sin6_addr, straddr, sizeof(straddr));
+                PEG_TRACE((TRC_HTTP, Tracer::LEVEL4,
+                  "Peer IP address: %s",
+                  straddr));
+                if(memcmp(s->sin6_addr.s6_addr, localhost_bytes, 16) == 0)
+                    // message was sent FROM localhost interface
+                    message->isFromRemoteHost = false;
+            }
+            PEG_TRACE((TRC_HTTP, Tracer::LEVEL4,
+              "sin_svr.ss_family: %d",
+              sin_svr.ss_family));
+            if( sin_svr.ss_family == AF_INET )
+            {
+                struct sockaddr_in *s = (struct sockaddr_in *)&sin_svr;
+                if( ((ntohl( s->sin_addr.s_addr ) >> 24) & 0xff) == 127 )
+                    // message was sent TO localhost interface
+                    message->isFromRemoteHost = false;
+            }
+            if( sin_svr.ss_family == AF_INET6 )
+            {
+                char straddr[INET6_ADDRSTRLEN];
+                struct sockaddr_in6 *s = (struct sockaddr_in6 *)&sin_svr;
+                static const unsigned char localhost_bytes[] =
+                  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+                inet_ntop(AF_INET6, &s->sin6_addr, straddr, sizeof(straddr));
+                PEG_TRACE((TRC_HTTP, Tracer::LEVEL4,
+                  "svr IP address: %s",
+                  straddr));
+                if(memcmp(s->sin6_addr.s6_addr, localhost_bytes, 16) == 0)
+                    // message was sent TO localhost interface
+                    message->isFromRemoteHost = false;
+            }
+        }
+
+        PEG_TRACE((TRC_HTTP, Tracer::LEVEL4,
+          "isFromRemoteHost: %d",
+          message->isFromRemoteHost));
+
         //
         // The _closeConnection method sets the _connectionClosePending flag.
         // If we are executing on the client side and the

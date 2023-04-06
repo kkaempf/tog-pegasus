@@ -49,7 +49,7 @@ int main()
         sprintf(prompt, "Enter password for %s: ", PEGASUS_CIMSERVERMAIN_USER);
         pw = getpass(prompt);
 
-        if (PAMAuthenticate(PEGASUS_CIMSERVERMAIN_USER, pw) == 0)
+        if (PAMAuthenticate(PEGASUS_CIMSERVERMAIN_USER, pw, 0) == 0)
             printf("Correct password\n");
         else
             printf("Wrong password\n");

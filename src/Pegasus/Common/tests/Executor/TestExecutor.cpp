@@ -76,7 +76,7 @@ void testExecutorLoopbackImpl()
 #endif
 
     PEGASUS_TEST_ASSERT(Executor::authenticatePassword(
-        "xnonexistentuserx", "wrongpassword") != 0);
+        "xnonexistentuserx", "wrongpassword", true) != 0);
     PEGASUS_TEST_ASSERT(Executor::validateUser("xnonexistentuserx") != 0);
 
     char challengeFilePath[EXECUTOR_BUFFER_SIZE];
@@ -115,7 +115,7 @@ void testExecutorSocketImpl()
     PEGASUS_TEST_ASSERT(Executor::reapProviderAgent(123) == 0);
 
     PEGASUS_TEST_ASSERT(Executor::authenticatePassword(
-        "xnonexistentuserx", "wrongpassword") == -1);
+        "xnonexistentuserx", "wrongpassword", true) == -1);
     PEGASUS_TEST_ASSERT(Executor::validateUser("xnonexistentuserx") == -1);
 
     char challengeFilePath[EXECUTOR_BUFFER_SIZE];

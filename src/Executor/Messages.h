@@ -199,6 +199,7 @@ struct ExecutorAuthenticatePasswordRequest
 {
     char username[EXECUTOR_BUFFER_SIZE];
     char password[EXECUTOR_BUFFER_SIZE];
+    Boolean isRemoteUser;
 };
 
 struct ExecutorAuthenticatePasswordResponse

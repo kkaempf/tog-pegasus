@@ -348,6 +348,22 @@ public:
         _rep->setAuthHandle(authHandle);
     }
 
+    /** Indicate whether the user is Remote 
+    */
+    Boolean isRemoteUser() const
+    {
+        CheckRep(_rep);
+        return _rep->isRemoteUser();
+    }
+
+    /** Set the Remote User flag
+    */
+    void setRemoteUser(Boolean isRemoteUser)
+    {
+        CheckRep(_rep);
+        _rep->setRemoteUser(isRemoteUser);
+    }
+
     AuthHandle getAuthHandle()
     {
         CheckRep(_rep);

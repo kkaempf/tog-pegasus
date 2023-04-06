@@ -126,7 +126,8 @@ public:
 
     virtual int authenticatePassword(
         const char* username,
-        const char* password) = 0;
+        const char* password,
+        Boolean isRemoteUser) = 0;
 
     virtual int validateUser(
         const char* username) = 0;
@@ -562,9 +563,10 @@ public:
 #if defined(PEGASUS_PAM_AUTHENTICATION)
     virtual int authenticatePassword(
         const char* username,
-        const char* password)
+        const char* password,
+        Boolean isRemoteUser)
     {
-        return PAMAuthenticate(username, password);
+        return PAMAuthenticate(username, password, isRemoteUser);
     }
     
     virtual int validateUser(
@@ -912,7 +914,8 @@ public:
 
     virtual int authenticatePassword(
         const char* username,
-        const char* password)
+        const char* password,
+        Boolean isRemoteUser)
     {
         AutoMutex autoMutex(_mutex);
 
@@ -930,6 +933,7 @@ public:
         memset(&request, 0, sizeof(request));
         Strlcpy(request.username, username, EXECUTOR_BUFFER_SIZE);
         Strlcpy(request.password, password, EXECUTOR_BUFFER_SIZE);
+        request.isRemoteUser = isRemoteUser;
 
         if (SendBlock(_sock, &request, sizeof(request)) != sizeof(request))
             return -1;
@@ -1181,10 +1185,11 @@ int Executor::reapProviderAgent(
 
 int Executor::authenticatePassword(
     const char* username,
-    const char* password)
+    const char* password,
+    Boolean isRemoteUser)
 {
     once(&_executorImplOnce, _initExecutorImpl);
-    return _executorImpl->authenticatePassword(username, password);
+    return _executorImpl->authenticatePassword(username, password, isRemoteUser);
 }
 
 int Executor::validateUser(

@@ -159,6 +159,7 @@ AuthenticationStatus BasicAuthenticationHandler::authenticate(
         _basicAuthenticator->authenticate(
             userName,
             password,
+            authInfo->isRemoteUser(),
             authInfo);
 
     // Log audit message.
