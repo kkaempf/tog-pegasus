@@ -46,12 +46,12 @@ CIMMOFL = cimmofl
 
 repository:
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(PROVIDERNS) namespace ...
-	@ $(CIMMOFL) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" \
+	@ $(CIMMOFL) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" \
               "-n$(PROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading $(BenchmarkMOF_NAME) class definitions into $(PROVIDERNS) namespace ...
-	@ $(CIMMOFL) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(PROVIDERNS)" $(BenchmarkMOF_NAME).mof
+	@ $(CIMMOFL) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(PROVIDERNS)" $(BenchmarkMOF_NAME).mof
 	@ $(ECHO) +++++ Registering benchmark Provider   ...
-	@ $(CIMMOFL) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" $(BenchmarkMOF_NAME)R.mof
+	@ $(CIMMOFL) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" $(BenchmarkMOF_NAME)R.mof
 
 repositoryServer:
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(PROVIDERNS) namespace ...

@@ -67,160 +67,160 @@ EI_STATIC_TEST_NAMESPACE = test/EmbeddedInstance/Static
 ##
 repository:
 	@ $(ECHO) +++++ Loading Core$(CIM_SCHEMA_VER)_Qualifiers.mof into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTPROVIDERNS) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTPROVIDERNS) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_Event$(CIM_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_Physical$(CIM_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Physical$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Physical$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_System$(CIM_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_System$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_System$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_Interop$(CIM_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Interop$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Interop$(CIM_SCHEMA_VER).mof
 
 	@ $(ECHO) +++++ Loading PG_Events$(PG_INTEROP_SCHEMA_VER) into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_INTEROP_MOF_PATH)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(PG_INTEROP_MOF_PATH)/PG_Events$(PG_INTEROP_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_INTEROP_MOF_PATH)" "-n$(TESTPROVIDERNS)" $(ALLOW_EXPERIMENTAL) $(PG_INTEROP_MOF_PATH)/PG_Events$(PG_INTEROP_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading TestInstanceProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestInstanceProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestInstanceProviderSchema.mof
 	@ $(ECHO) +++++ Loading TestChunkingStressProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestChunkingStressProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestChunkingStressProviderSchema.mof
 	@ $(ECHO) +++++ Loading IndicationStressTest class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" IndicationStressTestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" IndicationStressTestProviderSchema.mof
 	@ $(ECHO) +++++ Loading TestFaultyProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestFaultyProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestFaultyProviderSchema.mof
 
 	@ $(ECHO) +++++ Registering TestInstanceProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestInstanceProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestInstanceProviderRegistration.mof
 	@ $(ECHO) +++++ Registering TestChunkingStressProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestChunkingStressProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestChunkingStressProviderRegistration.mof
 	@ $(ECHO) +++++ Registering IndicationStressTest Provider  ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationStressTestProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationStressTestProviderR.mof
 	@ $(ECHO) +++++ Registering IndicationStressTestConsumer Provider  ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationStressTestConsumerR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationStressTestConsumerR.mof
 	@ $(ECHO) +++++ Registering ProviderLifecycleIndicationConsumer Provider  ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" ProviderLifecycleIndicationConsumerR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" ProviderLifecycleIndicationConsumerR.mof
 	@ $(ECHO) +++++ Registering TestFaultyProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestFaultyProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestFaultyProviderRegistration.mof
 	@ $(ECHO) +++++ Registering TestGoodInstanceProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestGoodInstanceProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestGoodInstanceProviderRegistration.mof
 
 	@ $(ECHO) +++++ Loading DeliveryRetryTest class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" DeliveryRetryTestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" DeliveryRetryTestProviderSchema.mof
 
 	@ $(ECHO) +++++ Registering DeliveryRetryTest Provider  ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" DeliveryRetryTestProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" DeliveryRetryTestProviderR.mof
 
 	@ $(ECHO) +++++ Registering IndicationStressTestConsumer Provider  ...
 	@ $(ECHO) +++++ Loading IndicationTestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" IndicationTestProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" IndicationTestProvider.mof
 	@ $(ECHO) +++++ Registering IndicationTestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationTestProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" IndicationTestProviderR.mof
 
 	@ $(ECHO) +++++ Loading MethodTestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" MethodTestProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" MethodTestProvider.mof
 	@ $(ECHO) +++++ Loading GroupMethodProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" GroupMethodProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" GroupMethodProvider.mof
 	@ $(ECHO) +++++ Loading ProviderLifecycleIndicationProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" ProviderLifecycleIndicationProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" ProviderLifecycleIndicationProvider.mof
 	@ $(ECHO) +++++ Registering MethodTestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" MethodTestProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" MethodTestProviderR.mof
 
 	@ $(ECHO) +++++ Loading CLITestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CLITestProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CLITestProvider.mof
 	@ $(ECHO) +++++ Registering CLITestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CLITestProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CLITestProviderR.mof
 
 	@ $(ECHO) +++++ Loading TestCIM_ErrorProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCIM_ErrorProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCIM_ErrorProvider.mof
 	@ $(ECHO) +++++ Registering TestCIM_ErrorProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCIM_ErrorProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCIM_ErrorProviderR.mof
 
 	@ $(ECHO) +++++ Installing the Family MOF file for the association provider
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TST_Family.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TST_Family.mof
 	@ $(ECHO) +++++ Registering FamilyProvider schema Providers  ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" FamilyProviderSchemaR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" FamilyProviderSchemaR.mof
 
 	@ $(ECHO) +++++ Loading CIMOMHandleTestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CIMOMHandleTestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CIMOMHandleTestProviderSchema.mof
 	@ $(ECHO) +++++ Registering CIMOMHandleTestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CIMOMHandleTestProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CIMOMHandleTestProviderRegistration.mof
 
 	@ $(ECHO) +++++ Loading TestAggregationOutputProvider.mof into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestAggregationOutputProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestAggregationOutputProvider.mof
 	@ $(ECHO) +++++ Registering TestAggregationOutputProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestAggregationOutputProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestAggregationOutputProviderR.mof
 
 	@ $(ECHO) +++++ Loading LocalizedProvider.mof into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" LocalizedProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" LocalizedProvider.mof
 	@ $(ECHO) +++++ Registering LocalizedProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" LocalizedProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" LocalizedProviderR.mof
 
 	@ $(ECHO) +++++ Loading ResponseStressTest class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" ResponseStressTest.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" ResponseStressTest.mof
 	@ $(ECHO) +++++ Registering ResponseStressTestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" ResponseStressTestProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" ResponseStressTestProviderRegistration.mof
 
 ifeq ($(PEGASUS_ENABLE_CMPI_PROVIDER_MANAGER), true)
 	@ $(ECHO) +++++ Loading TestCMPI_ProviderSchema class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCMPI_ProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCMPI_ProviderSchema.mof
 
 	@ $(ECHO) +++++ Registering TestCMPI_ProviderRegistration ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_ProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_ProviderRegistration.mof
 
 	@ $(ECHO) +++++ Loading TestCMPI_Association class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCMPI_AssociationProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestCMPI_AssociationProvider.mof
 	@ $(ECHO) +++++ Registering TestCMPI_AssociationProviderRegistration ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_AssociationProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_AssociationProviderR.mof
 
 	@ $(ECHO) +++++ Loading CMPIPerf_TestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CMPIPerf_TestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" CMPIPerf_TestProviderSchema.mof
 	@ $(ECHO) +++++ Registering CMPIPerf_TestProviderRegistration ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CMPIPerf_TestProviderRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" CMPIPerf_TestProviderRegistration.mof
 	
 ifdef PEGASUS_ENABLE_EXECQUERY
 	@ $(ECHO) +++++ Registering TestCMPI_ProviderExecQueryRegistration ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_ProviderExecQueryRegistration.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestCMPI_ProviderExecQueryRegistration.mof
 endif
 
 endif
 
 ifndef PEGASUS_DISABLE_PROV_USERCTXT
 	@ $(ECHO) +++++ Loading UserContextTestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" UserContextTestProvider.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" UserContextTestProvider.mof
 
 	@ $(ECHO) +++++ Registering UserContextTestProvider ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextRequestorR.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextPrivilegedR.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextDesignatedR.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextCIMServerR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextRequestorR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextPrivilegedR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextDesignatedR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" UserContextCIMServerR.mof
 endif
 	@ $(ECHO) +++++ Loading OOPModuleFailureTestProvider class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" FailureTestIndication.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" FailureTestIndication.mof
 
 ifdef PEGASUS_BUILD_INTEROP 
 	@ $(ECHO) +++++ Loading TestServerProfile class definitions into $(TESTPROVIDERNS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestServerProfileSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTPROVIDERNS)" TestServerProfileSchema.mof
 	@ $(ECHO) +++++ Registering TestServerProfile Providers ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestServerProfileR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" TestServerProfileR.mof
 endif
 
 	@ $(ECHO) +++++ EmbeddedInstanceTest provider class definitions into $(EI_DYNAMIC_TEST_NAMESPACE) and $(EI_STATIC_TEST_NAMESPACE) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(EI_DYNAMIC_TEST_NAMESPACE) $(EI_SCHEMA_DIR)/Core_Qualifiers.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" CIMError.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Core.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Event.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Interop.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" EmbeddedInstanceProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(EI_DYNAMIC_TEST_NAMESPACE) $(EI_SCHEMA_DIR)/Core_Qualifiers.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" CIMError.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Core.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Event.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Interop.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_DYNAMIC_TEST_NAMESPACE)" "-aE" EmbeddedInstanceProviderSchema.mof
 
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(EI_STATIC_TEST_NAMESPACE) $(EI_SCHEMA_DIR)/Core_Qualifiers.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" CIMError.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Core.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Event.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Interop.mof
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" EmbeddedInstanceProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(EI_STATIC_TEST_NAMESPACE) $(EI_SCHEMA_DIR)/Core_Qualifiers.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" CIMError.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Core.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Event.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" $(EI_SCHEMA_DIR)/CIM_Interop.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(EI_SCHEMA_DIR)" "-n$(EI_STATIC_TEST_NAMESPACE)" "-aE" EmbeddedInstanceProviderSchema.mof
 
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" EmbeddedInstanceProviderR.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(INTEROPNS)" EmbeddedInstanceProviderR.mof
 # create remote namespace for Remote CMPI test providers
 ifdef PEGASUS_ENABLE_REMOTE_CMPI
 	@ echo +++++ Creating remote namespace ...
@@ -231,28 +231,28 @@ endif
 ##  Indication filter source namespaces testing
 ##
 	@ $(ECHO) +++++ Loading Core$(CIM_SCHEMA_VER)_Qualifiers.mof into $(TESTINDSRCNS1) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTINDSRCNS1) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTINDSRCNS1) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(TESTINDSRCNS1) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS1)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS1)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_Event$(CIM_SCHEMA_VER) into $(TESTINDSRCNS1) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS1)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS1)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading IndicationStressTest class definition into $(TESTINDSRCNS1) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS1)" IndicationStressTestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS1)" IndicationStressTestProviderSchema.mof
 ifeq ($(PEGASUS_ENABLE_CMPI_PROVIDER_MANAGER), true)
 	@ $(ECHO) +++++ Loading TestCMPI_ProviderSchema class definitions into $(TESTINDSRCNS1) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS1)" TestCMPI_ProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS1)" TestCMPI_ProviderSchema.mof
 endif
 	@ $(ECHO) +++++ Loading Core$(CIM_SCHEMA_VER)_Qualifiers.mof into $(TESTINDSRCNS2) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTINDSRCNS2) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" -n$(TESTINDSRCNS2) $(CIM_SCHEMA_DIR)/Core$(CIM_SCHEMA_VER)_Qualifiers.mof
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(TESTINDSRCNS2) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS2)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS2)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading CIM_Event$(CIM_SCHEMA_VER) into $(TESTINDSRCNS2) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS2)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(TESTINDSRCNS2)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Event$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading IndicationStressTest class definition into $(TESTINDSRCNS2) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS2)" IndicationStressTestProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS2)" IndicationStressTestProviderSchema.mof
 ifeq ($(PEGASUS_ENABLE_CMPI_PROVIDER_MANAGER), true)
 	@ $(ECHO) +++++ Loading TestCMPI_ProviderSchema class definitions into $(TESTINDSRCNS2) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS2)" TestCMPI_ProviderSchema.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(TESTINDSRCNS2)" TestCMPI_ProviderSchema.mof
 endif
 
 

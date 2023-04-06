@@ -66,33 +66,33 @@ endif
 ifeq ($(MANAGEDSYSTEM_NS_SUPPORTED),true)
 repository:
 	@ $(ECHO) +++++ Loading CIM_Schema$(CIM_SCHEMA_VER) into $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(MANAGEDSYSTEMNS)" $(ALLOW_EXPERIMENTAL) "$(CIM_SCHEMA_DIR)/CIM_Schema$(CIM_SCHEMA_VER).mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(MANAGEDSYSTEMNS)" $(ALLOW_EXPERIMENTAL) "$(CIM_SCHEMA_DIR)/CIM_Schema$(CIM_SCHEMA_VER).mof"
 	@ $(ECHO) +++++ Loading PG_Events$(PG_INTEROP_SCHEMA_VER) into $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_INTEROP_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_INTEROP_MOF_PATH)/PG_Events$(PG_INTEROP_SCHEMA_VER).mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_INTEROP_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_INTEROP_MOF_PATH)/PG_Events$(PG_INTEROP_SCHEMA_VER).mof"
 	@ $(ECHO) +++++ Loading PG_ManagedSystemSchema$(PG_SCHEMA_VER) into $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema$(PG_SCHEMA_VER).mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema$(PG_SCHEMA_VER).mof"
 ifndef SET_USER_CONTEXT_TO_REQUESTOR 
 	@ $(ECHO) +++++ Registering Providers for PG_ManagedSystemSchema$(PG_SCHEMA_VER) ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema$(PG_SCHEMA_VER)R.mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema$(PG_SCHEMA_VER)R.mof"
 else
 	@ $(ECHO) +++++ Registering Providers for PG_ManagedSystemSchema21R ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema21R.mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemSchema21R.mof"
 endif
 ifeq ($(PEGASUS_USE_RELEASE_CONFIG_OPTIONS),false)
 	@ $(ECHO) +++++ Loading PG_ManagedSystemTestSchema$(PG_SCHEMA_VER) into $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/PG_ManagedSystemTestSchema$(PG_SCHEMA_VER).mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/PG_ManagedSystemTestSchema$(PG_SCHEMA_VER).mof"
 	@ $(ECHO) +++++ Registering Providers for PG_ManagedSystemTestSchema$(PG_SCHEMA_VER) ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemTestSchema$(PG_SCHEMA_VER)R.mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_ManagedSystemTestSchema$(PG_SCHEMA_VER)R.mof"
 endif
 ifeq ($(EXTENDED_MANAGEDSYSTEM_NS_SUPPORTED),true)
 	@ $(ECHO) +++++ Loading platform specific class definitions in $(MANAGEDSYSTEMNS) namespace  ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/$(FILE_PREFIX)_ManagedSystemSchema$(PG_SCHEMA_VER).mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(MANAGEDSYSTEMNS)" "$(PG_MOF_PATH)/$(FILE_PREFIX)_ManagedSystemSchema$(PG_SCHEMA_VER).mof"
 	@ $(ECHO) +++++ Registering Providers for platform specific classes in $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/$(FILE_PREFIX)_ManagedSystemSchema$(PG_SCHEMA_VER)R.mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/$(FILE_PREFIX)_ManagedSystemSchema$(PG_SCHEMA_VER)R.mof"
 endif
 ifeq ($(PEGASUS_ENABLE_SLP),true)	
 	@ $(ECHO) +++++ Registering the SLPProvider in $(MANAGEDSYSTEMNS) namespace ...
-	@ $(CIMMOFCLI) "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_SLPProvider$(PG_SCHEMA_VER)R.mof"
+	@ $(CIMMOFCLI) "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(PG_MOF_PATH)" "-n$(INTEROPNS)" "$(PG_MOF_PATH)/PG_SLPProvider$(PG_SCHEMA_VER)R.mof"
 endif
 
 repositoryServer:

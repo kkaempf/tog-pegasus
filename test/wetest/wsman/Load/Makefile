@@ -46,9 +46,9 @@ WSM_TEST_NS=test/WsmTest
 # NOTE: I believe that the remove is duplicated for some reason.
 repository:
 	@ $(ECHO) +++++ Loading CIM_Core$(CIM_SCHEMA_VER) into $(WSM_TEST_NS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(WSM_TEST_NS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-I$(CIM_SCHEMA_DIR)" "-n$(WSM_TEST_NS)" $(ALLOW_EXPERIMENTAL) $(CIM_SCHEMA_DIR)/CIM_Core$(CIM_SCHEMA_VER).mof
 	@ $(ECHO) +++++ Loading Wsm test class definitions into $(WSM_TEST_NS) namespace ...
-	@ cimmofl "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(WSM_TEST_NS)" WsmTest.mof
+	@ cimmofl "-aE" "-R$(REPOSITORY_DIR)" "-N$(REPOSITORY_NAME)" "-M$(REPOSITORY_MODE)" "-n$(WSM_TEST_NS)" WsmTest.mof
 
 # Load the sample mof through the Client interface compiler but do not
 # clean out the existing version.
