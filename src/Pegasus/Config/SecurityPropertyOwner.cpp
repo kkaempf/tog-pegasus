@@ -124,7 +124,7 @@ static struct ConfigPropertyRow properties[] =
 #if defined(PEGASUS_OS_HPUX) || defined(PEGASUS_OS_LINUX)
 # ifdef PEGASUS_USE_RELEASE_CONFIG_OPTIONS
     {"enableSubscriptionsForNonprivilegedUsers",
-         "false", IS_STATIC, IS_VISIBLE},
+         "true", IS_STATIC, IS_VISIBLE},
 # else
     {"enableSubscriptionsForNonprivilegedUsers", "true", IS_STATIC, IS_VISIBLE},
 # endif
