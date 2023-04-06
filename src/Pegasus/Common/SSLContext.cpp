@@ -225,27 +225,31 @@ int SSLCallback::verificationCRLCallback(
     PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL4, buf);
 
     //initialize the CRL store
-    X509_STORE_CTX crlStoreCtx;
-    X509_STORE_CTX_init(&crlStoreCtx, sslCRLStore, NULL, NULL);
+    X509_STORE_CTX* crlStoreCtx;
+    crlStoreCtx = X509_STORE_CTX_new();
+    X509_STORE_CTX_init(crlStoreCtx, sslCRLStore, NULL, NULL);
 
     PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL4,
         "---> SSL: Initialized CRL store");
 
     //attempt to get a CRL issued by the certificate's issuer
-    X509_OBJECT obj;
+    X509_OBJECT* obj;
+    obj = X509_OBJECT_new();
     if (X509_STORE_get_by_subject(
-            &crlStoreCtx, X509_LU_CRL, issuerName, &obj) <= 0)
+            crlStoreCtx, X509_LU_CRL, issuerName, obj) <= 0)
     {
-        X509_STORE_CTX_cleanup(&crlStoreCtx);
+        X509_OBJECT_free(obj);
+        X509_STORE_CTX_cleanup(crlStoreCtx);
         PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL3,
             "---> SSL: No CRL by that issuer");
         PEG_METHOD_EXIT();
         return 0;
     }
-    X509_STORE_CTX_cleanup(&crlStoreCtx);
+    X509_STORE_CTX_cleanup(crlStoreCtx);
 
     //get CRL
-    X509_CRL* crl = obj.data.crl;
+    X509_CRL* crl;
+    crl = X509_OBJECT_get0_X509_CRL(obj);
     if (crl == NULL)
     {
         PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL4, "---> SSL: CRL is null");
@@ -272,18 +276,18 @@ int SSLCallback::verificationCRLCallback(
     {
         revokedCert = sk_X509_REVOKED_value(X509_CRL_get_REVOKED(crl), i);
         //a matching serial number indicates revocation
-        if (ASN1_INTEGER_cmp(revokedCert->serialNumber, serialNumber) == 0)
+        if (ASN1_INTEGER_cmp(X509_REVOKED_get0_serialNumber(revokedCert), serialNumber) == 0)
         {
             PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL2,
                 "---> SSL: Certificate is revoked");
             X509_STORE_CTX_set_error(ctx, X509_V_ERR_CERT_REVOKED);
-            X509_CRL_free(crl);
+            X509_OBJECT_free(obj);
             PEG_METHOD_EXIT();
             return 1;
         }
     }
 
-    X509_CRL_free(crl);
+    X509_OBJECT_free(obj);
 
     PEG_TRACE_CSTRING(TRC_SSL, Tracer::LEVEL4,
         "---> SSL: Certificate is not revoked at this level");

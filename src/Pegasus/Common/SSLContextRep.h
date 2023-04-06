@@ -104,7 +104,11 @@ public:
 
             //important as per following site for 
             //http://www.openssl.org/support/faq.html#PROG
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
             CRYPTO_malloc_init();
+#else
+            OPENSSL_malloc_init();
+#endif
             SSL_library_init();
             SSL_load_error_strings();
         }
