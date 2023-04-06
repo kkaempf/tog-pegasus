@@ -140,7 +140,7 @@ static struct ConfigPropertyRow properties[] =
 #ifdef PEGASUS_ENABLE_USERGROUP_AUTHORIZATION
     {"authorizedUserGroups", "", IS_STATIC, IS_VISIBLE},
 #endif
-    {"sslCipherSuite", "DEFAULT", IS_STATIC, IS_VISIBLE}
+    {"sslCipherSuite", "PROFILE=SYSTEM", IS_STATIC, IS_VISIBLE}
 #ifdef PEGASUS_ENABLE_SESSION_COOKIES
     ,{"httpSessionTimeout", "0", IS_DYNAMIC, IS_VISIBLE}
 #endif
