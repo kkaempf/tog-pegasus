@@ -35,4 +35,5 @@ LIBRARIES= \
     pegrepository \
     pegconfig \
     pegclient \
-    pegcommon
+    pegcommon \
+    pegwsmserver
