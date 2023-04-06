@@ -129,6 +129,7 @@ Array<CIMInstance> InteropProvider::enumElementConformsToProfileRPRPInstances(
 Array<CIMInstance> InteropProvider::enumElementConformsToProfileInstances(
     const OperationContext & opContext, const CIMNamespaceName & opNamespace)
 {
+    const Uint32 PEGASUS_DYNAMIC_LEN(PEGASUS_DYNAMIC.size());
     CIMClass elementConformsClass = repository->getClass(
         PEGASUS_NAMESPACENAME_INTEROP,
         PEGASUS_CLASSNAME_PG_ELEMENTCONFORMSTOPROFILE,
