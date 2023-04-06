@@ -28,18 +28,9 @@
 #//////////////////////////////////////////////////////////////////////////
 INCLUDES = -I$(ROOT)/src $(EXTRA_INCLUDES)
 
-ifndef LINK_RPATH
-    LINK_RPATH = -Xlinker -rpath
-endif
-
 LINK_DEST_LIB = -Xlinker $(PEGASUS_DEST_LIB_DIR)
 
 LINK_LIB_DIR = -Xlinker $(LIB_DIR)
-
-ifndef LINK_RPATH_LINK
-    LINK_RPATH_LINK = -Xlinker -rpath-link
-endif
-
 
 TMP_OBJECTS = $(foreach i,$(SOURCES),$(OBJ_DIR)/$i)
 
@@ -52,15 +43,9 @@ FULL_PROGRAM=$(BIN_DIR)/$(PROGRAM)$(EXE)
 EXE_OUTPUT = $(EXE_OUT) $(FULL_PROGRAM)
 
 ifdef PEGASUS_PLATFORM_LINUX_GENERIC_GNU
-    ifdef PEGASUS_USE_RELEASE_DIRS
-        EXTRA_LINK_FLAGS += $(LINK_RPATH) $(LINK_DEST_LIB) $(LINK_RPATH_LINK) $(LINK_LIB_DIR)
-    else
-        EXTRA_LINK_FLAGS += $(LINK_RPATH) $(LINK_LIB_DIR)
-    endif
-
     ifeq ($(HAS_ICU_DEPENDENCY),true)
         ifdef ICU_INSTALL
-            EXTRA_LINK_FLAGS += $(LINK_RPATH) -Xlinker ${ICU_INSTALL}/lib
+            EXTRA_LINK_FLAGS += -Xlinker ${ICU_INSTALL}/lib
         endif
     endif
 endif

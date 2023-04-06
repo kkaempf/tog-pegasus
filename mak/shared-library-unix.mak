@@ -98,15 +98,14 @@ ifeq ($(COMPILER),gnu)
   ifneq ($(OS),darwin)
    ifdef PEGASUS_USE_RELEASE_DIRS
       LINK_COMMAND = $(CXX) -shared $(LINK_MACHINE_OPTIONS)
-      LINK_ARGUMENTS = -Wl,-hlib$(LIBRARY)$(LIB_SUFFIX)  -Xlinker -rpath \
-          -Xlinker $(PEGASUS_DEST_LIB_DIR) $(EXTRA_LINK_ARGUMENTS)
+      LINK_ARGUMENTS = -Wl,-hlib$(LIBRARY)$(LIB_SUFFIX)  $(EXTRA_LINK_ARGUMENTS)
    else
       LINK_COMMAND = $(CXX) -shared $(LINK_MACHINE_OPTIONS)
-      LINK_ARGUMENTS = -Wl,-hlib$(LIBRARY)$(LIB_SUFFIX)  -Xlinker -rpath -Xlinker $(LIB_DIR) $(EXTRA_LINK_ARGUMENTS)
+      LINK_ARGUMENTS = -Wl,-hlib$(LIBRARY)$(LIB_SUFFIX)  $(EXTRA_LINK_ARGUMENTS)
    endif
   else
     LINK_COMMAND = $(CXX) -dynamiclib
-    LINK_ARGUMENTS = --helplib$(LIBRARY)$(LIB_SUFFIX) -ldl
+    LINK_ARGUMENTS = --helplib$(LIBRARY)$(LIB_SUFFIX) -ldl $(EXTRA_LINK_ARGUMENTS)
   endif
   ifeq ($(PEGASUS_PLATFORM), SOLARIS_SPARC_GNU)
     LINK_ARGUMENTS = -Wl,-hlib$(LIBRARY)$(LIB_SUFFIX) -Xlinker -L$(LIB_DIR) $(EXTRA_LINK_ARGUMENTS)
