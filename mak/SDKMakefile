@@ -510,6 +510,18 @@ ifeq ($(RUNTIME_PLATFORM_TEST_NEEDED), true)
             >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
 	@$(ECHO-E) "   endif" \
             >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   ifeq (\044(shell uname -i),sparc)" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "      PEGASUS_PLATFORM = LINUX_SPARCV9_GNU" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   endif" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   ifeq (\044(shell uname -i),sparc64)" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "      PEGASUS_PLATFORM = LINUX_SPARC64_GNU" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   endif" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
   else
         $(error This SDK has been defined to include the following \
         platforms: $(PACKAGED_PLATFORM_FILES). \
@@ -594,6 +606,18 @@ ifeq ($(RUNTIME_PLATFORM_TEST_NEEDED), true)
 	@$(ECHO-E) "endif" \
             >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
 
+	@$(ECHO-E) "ifeq (\044(PEGASUS_PLATFORM),LINUX_SPARCV9_GNU)" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   PEGASUS_ARCH_LIB = lib" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "endif" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "ifeq (\044(PEGASUS_PLATFORM),LINUX_SPARC64_GNU)" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   PEGASUS_ARCH_LIB = lib64" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "endif" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
   else
         $(error This SDK has been defined to include the following \
         platforms: $(PACKAGED_PLATFORM_FILES). \
