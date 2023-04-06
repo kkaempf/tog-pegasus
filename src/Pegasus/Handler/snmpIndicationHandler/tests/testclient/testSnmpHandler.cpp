@@ -176,14 +176,14 @@ CIMObjectPath _createHandlerInstance(
         oid *snmpSecAuthProtoOid = NULL;
         if(snmpSecAuthKey.size() > 0)
         {
-           if(snmpSecAuthProto == 1)
+           /* if(snmpSecAuthProto == 1)
             {
                 snmpSecAuthProtoOid = snmp_duplicate_objid(
                     usmHMACMD5AuthProtocol,
                     USM_AUTH_PROTO_MD5_LEN);
                 snmpSecAuthProtoLen = USM_AUTH_PROTO_MD5_LEN;
             }
-            else if(snmpSecAuthProto == 2)
+            else */ if(snmpSecAuthProto == 2)
             {
                 snmpSecAuthProtoOid = snmp_duplicate_objid(
                     usmHMACSHA1AuthProtocol,

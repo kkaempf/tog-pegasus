@@ -200,12 +200,11 @@ private:
     /**
         Add the community string to the snmp session for V1 and V2C
 
-        @param sessionPtr    the SNMP session pointer to its associated
-                             struct snmp_session
+        @param snmpSession      struct snmp_session
         @param securityName     the human readable community name
     */
     void _addCommunity(
-        struct snmp_session*& sessionPtr,
+        struct snmp_session& snmpSession,
         const String& securityName);
 
     /**
