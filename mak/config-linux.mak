@@ -127,6 +127,7 @@ else
   # appeared in the 3.0 series of compilers.
   #
   ifeq ($(COMPILER), gnu)
+   FLAGS += -g
    # disable the strict aliasing
    ifeq ($(shell expr $(GCC_VERSION) '>=' 3.0), 1)
      PEGASUS_EXTRA_CXX_FLAGS += -fno-enforce-eh-specs -fno-strict-aliasing
