@@ -32,6 +32,8 @@ DIR = Pegasus/ProviderManagerService/ProviderAgent
 
 include $(ROOT)/mak/config.mak
 
+FLAGS := $(FLAGS:-fPIC=-fPIE)
+
 LIBRARIES = \
     pegpmrouter \
     pegprovidermanager \

@@ -34,6 +34,8 @@ DIR = Clients/repupgrade
 
 include $(ROOT)/mak/config.mak
 
+FLAGS := $(FLAGS:-fPIC=-fPIE)
+
 LOCAL_DEFINES = -DPEGASUS_INTERNALONLY
 
 LIBRARIES = \

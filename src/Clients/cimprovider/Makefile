@@ -34,6 +34,8 @@ DIR = Clients/cimprovider
 
 include $(ROOT)/mak/config.mak
 
+FLAGS := $(FLAGS:-fPIC=-fPIE)
+
 LIBRARIES = \
     pegcliutils \
     pegclient \

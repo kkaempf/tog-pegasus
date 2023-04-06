@@ -30,6 +30,8 @@ ROOT = ../../../../..
 DIR = Pegasus/Compiler/cmdline/cimmofl
 include $(ROOT)/mak/config.mak
 
+FLAGS := $(FLAGS:-fPIC=-fPIE)
+
 LOCAL_DEFINES = -DPEGASUS_INTERNALONLY
 
 PROGRAM = cimmofl

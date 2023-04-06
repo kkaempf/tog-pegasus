@@ -33,6 +33,8 @@ PEGASUS_ZOS_PROGRAM_OBJECT = yes
 DIR = Clients/osinfo
 include $(ROOT)/mak/config.mak
 
+FLAGS := $(FLAGS:-fPIC=-fPIE)
+
 LIBRARIES = \
     pegcliutils \
     peggetoopt \
