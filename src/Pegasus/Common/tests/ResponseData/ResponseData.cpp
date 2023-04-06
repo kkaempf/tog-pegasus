@@ -67,7 +67,8 @@ void setPropertyValue(CIMInstance& instance, const CIMName& propertyName,
     const Uint32 value)
 {
     Uint32 pos;
-    PEGASUS_ASSERT(pos = instance.findProperty(propertyName) != PEG_NOT_FOUND);
+    pos = instance.findProperty(propertyName);
+    PEGASUS_ASSERT(pos != PEG_NOT_FOUND);
     instance.getProperty(pos).setValue(CIMValue(value));
 }
 

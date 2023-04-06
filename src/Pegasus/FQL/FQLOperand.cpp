@@ -331,6 +331,7 @@ Uint32 FQLOperand::arraySize() const
             PEGASUS_ASSERT(false);
         }
     }
+  return 0;
 }
 
 // KS_TODO - Simplfy by creating a toStringValue with case for each

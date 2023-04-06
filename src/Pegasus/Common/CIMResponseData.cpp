@@ -150,6 +150,7 @@ Array<CIMInstance>& CIMResponseData::getInstancesFromInstancesOrObjects()
 
     }
     PEGASUS_ASSERT(false);
+  return _instances;
 }
 
 // Objects handling
