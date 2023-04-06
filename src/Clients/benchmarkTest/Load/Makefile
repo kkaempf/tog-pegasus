@@ -33,11 +33,7 @@ include $(ROOT)/mak/configschema.mak
 include $(ROOT)/mak/test.mak
 include $(ROOT)/mak/commands.mak
 
-ifdef TESTID
-   BenchmarkMOF_NAME = benchmarkProvider_$(TESTID)
-else
-   BenchmarkMOF_NAME = benchmarkProvider
-endif
+BenchmarkMOF_NAME = benchmarkProvider
 
 PROVIDERNS=root/benchmark
 PROVIDERNSDIRECTORY=$(REPOSITORY_ROOT)/root\#benchmark
@@ -74,11 +70,7 @@ unregisterproviders:
 changeconfig:
 	$(MAKE) -i cimstart
 	$(MAKE) unregister
-ifdef TESTID
-	$(MAKE) repositoryServer TESTID=$(TESTID)
-else
 	$(MAKE) repositoryServer
-endif
 
 
 depend:
