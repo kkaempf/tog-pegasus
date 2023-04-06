@@ -349,13 +349,6 @@ CMPIrc CMPISCMOUtilities::scmoValue2CMPIData(
     data->value.uint64 = 0;
     data->state = CMPI_goodValue;
 
-    //Check for NULL CIMValue
-    if( scmoValue == 0 )
-    {
-        data->state = CMPI_nullValue;
-        return CMPI_RC_OK;
-    }
-
     if (type & CMPI_ARRAY)
     {
         // Get the type of the element of the CMPIArray
@@ -389,6 +382,12 @@ CMPIrc CMPISCMOUtilities::scmoValue2CMPIData(
     }
     else
     {
+        //Check for NULL CIMValue
+        if( scmoValue == 0 )
+        {
+            data->state = CMPI_nullValue;
+            return CMPI_RC_OK;
+        }
         // Check for encpsulated type, which need special handling
         if (type&CMPI_ENC)
         {
