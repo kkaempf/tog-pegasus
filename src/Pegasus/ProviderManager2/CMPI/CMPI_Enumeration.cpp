@@ -167,6 +167,7 @@ extern "C"
                     (new CMPI_Object(
                         new SCMOInstance((*ia)[ie->cursor++]),
                         CMPI_Object::ObjectTypeInstance));
+                data.state = CMPI_goodValue;
                 CMSetStatus(rc, CMPI_RC_OK);
             }
             else
@@ -185,6 +186,7 @@ extern "C"
                     (new CMPI_Object(
                         new SCMOInstance((*ia)[ie->cursor++]),
                         CMPI_Object::ObjectTypeInstance));
+                data.state = CMPI_goodValue;
                 CMSetStatus(rc, CMPI_RC_OK);
             }
             else
@@ -203,6 +205,7 @@ extern "C"
                     (new CMPI_Object(
                         new SCMOInstance((*opa)[oe->cursor++]),
                         CMPI_Object::ObjectTypeObjectPath));
+                data.state = CMPI_goodValue;
                 CMSetStatus(rc, CMPI_RC_OK);
             }
             else
