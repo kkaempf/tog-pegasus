@@ -37,7 +37,7 @@ else
 ifeq ($(PEGASUS_INTEROP_NAMESPACE),interop)
 INTEROPNS=interop
 else
-INTEROPNS=root/PG_InterOp
+INTEROPNS=root/interop
 endif
 endif
 
@@ -48,20 +48,20 @@ createCXXrepository:
 	@$(ECHO) "+++++ Creating $(SAMPLECXXPROVIDERNS) namespace ..."
 	@$(ECHO) "+++++ Loading SDK_CIM_Schema.mof into" \
             "$(SAMPLECXXPROVIDERNS) namespace ..."
-	@$(PEGASUS_BIN_DIR)/cimmof -I$(PEGASUS_CIM_SCHEMA_DIR) \
+	@$(PEGASUS_BIN_DIR)/cimmof "-aE" -I$(PEGASUS_CIM_SCHEMA_DIR) \
             -n$(SAMPLECXXPROVIDERNS) SDK_CIM_Schema.mof
 	@ $(ECHO) "+++++ Loading class definitions into " \
             "$(SAMPLECXXPROVIDERNS) namespace ..."
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(SAMPLECXXPROVIDERNS) \
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(SAMPLECXXPROVIDERNS) \
              SampleProviderSchema.mof
 
 createCMPIrepository:
 	@$(ECHO) "+++++ Creating $(SAMPLECMPIPROVIDERNS) namespace ..."
 	@$(ECHO) "+++++ Loading SDK_CIM_Schema.mof into" \
             "$(SAMPLECMPIPROVIDERNS) namespace ..."
-	@$(PEGASUS_BIN_DIR)/cimmof -I$(PEGASUS_CIM_SCHEMA_DIR) \
+	@$(PEGASUS_BIN_DIR)/cimmof "-aE" -I$(PEGASUS_CIM_SCHEMA_DIR) \
             -n$(SAMPLECMPIPROVIDERNS) SDK_CIM_Schema.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(SAMPLECMPIPROVIDERNS) CWS_FilesAndDir.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(SAMPLECMPIPROVIDERNS) CWS_FilesAndDir.mof
 
 createrepository: createCXXrepository createCMPIrepository
 	@$(ECHO) "+++++ Repository created."
@@ -69,12 +69,12 @@ createrepository: createCXXrepository createCMPIrepository
 registerproviders:
 	@ $(ECHO) "+++++ Registering providers for" \
             "$(SAMPLECXXPROVIDERNS) namespace  ..."
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) InstanceProviderR.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) MethodProviderR.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) IndicationProviderR.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) SimpleDisplayConsumerR.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) CWS_FilesAndDirR.mof
-	@ $(PEGASUS_BIN_DIR)/cimmof -n$(INTEROPNS) AssociationProviderR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) InstanceProviderR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) MethodProviderR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) IndicationProviderR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) SimpleDisplayConsumerR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) CWS_FilesAndDirR.mof
+	@ $(PEGASUS_BIN_DIR)/cimmof "-aE" -n$(INTEROPNS) AssociationProviderR.mof
 
 deregisterproviders:
 	@ $(ECHO) "+++++ Deregistering SDKInstanceProviderModule ..."

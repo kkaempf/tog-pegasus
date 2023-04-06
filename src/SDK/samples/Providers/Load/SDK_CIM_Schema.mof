@@ -45,6 +45,7 @@
 #pragma include ("DMTF/Core/CIM_ManagedElement.mof")
 #pragma include ("DMTF/Core/CIM_ManagedSystemElement.mof")
 #pragma include ("DMTF/Core/CIM_LogicalElement.mof")
+#pragma include ("DMTF/Core/CIM_AbstractComponent.mof")
 #pragma include ("DMTF/Core/CIM_Component.mof")
 #pragma include ("DMTF/Event/CIM_Indication.mof")
 #pragma include ("DMTF/System/CIM_LogicalFile.mof")
