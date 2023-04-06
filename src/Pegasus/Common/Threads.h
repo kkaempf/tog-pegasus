@@ -245,7 +245,7 @@ inline bool Threads::null(const ThreadType& x)
 
 inline void Threads::clear(ThreadType& x)
 {
-    memset(&x, 0, sizeof(x));
+    memset(static_cast<void*>(&x), 0, sizeof(x));
 }
 
 #endif /* defined(PEGASUS_HAVE_PTHREADS) */

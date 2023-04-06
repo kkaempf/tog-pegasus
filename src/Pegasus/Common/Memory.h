@@ -59,7 +59,7 @@ PEGASUS_NAMESPACE_BEGIN
 template<class T>
 inline void Zeros(T* items, Uint32 size)
 {
-    memset(items, 0, sizeof(T) * size);
+    memset(static_cast<void*>(items), 0, sizeof(T) * size);
 }
 
 template<class T>
@@ -157,7 +157,7 @@ inline void CopyToRaw(Real64* to, const Real64* from, Uint32 size)
 
 inline void CopyToRaw(Char16* to, const Char16* from, Uint32 size)
 {
-    memcpy(to, from, sizeof(Char16) * size);
+    memcpy(static_cast<void*>(to), from, sizeof(Char16) * size);
 }
 
 template<class T>

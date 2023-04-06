@@ -88,6 +88,8 @@ public:
     */
     CIMName(const char* name);
 
+    CIMName(const CIMName& other) : cimName(other.cimName) {}
+
     /**
         Assigns the value of the specified CIMName object to this object.
         @param name The CIMName object from which to assign this
@@ -278,6 +280,8 @@ public:
             thrown here
     */
     CIMNamespaceName(const char* name);
+
+    CIMNamespaceName(const CIMNamespaceName& other) : cimNamespaceName(other.cimNamespaceName) {}
 
     /**
         Assigns the value of the specified CIMNamespaceName object to this
