@@ -1008,9 +1008,11 @@ Boolean CIMOperationRequestDispatcher::_enqueueResponse(
             }
             else
             {
+/*
                 EnumerationContext* ent = _enumerationContextTable->find(
                     poA->_contextId);
                 PEGASUS_DEBUG_ASSERT(ent == en);
+*/
             }
 
             PEGASUS_DEBUG_ASSERT(poA->_contextId == en->getContextId());

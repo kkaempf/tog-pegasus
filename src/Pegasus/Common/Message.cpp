@@ -430,7 +430,8 @@ CIMOperationType Message::convertMessageTypetoCIMOpType(MessageType type)
  */
 Boolean Message::valid() const
 {
-    return magic && (_type < NUMBER_OF_MESSAGES);
+    //return magic && (_type < NUMBER_OF_MESSAGES);
+    return true;
 }
 
 
