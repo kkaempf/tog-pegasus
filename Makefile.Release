@@ -207,6 +207,7 @@ endif
 
 PEGASUS_ADMIN_CMDS = \
    cimauth \
+   cimuser \
    cimconfig \
    cimserver \
    cimprovagt \
