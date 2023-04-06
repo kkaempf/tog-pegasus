@@ -64,6 +64,12 @@ static const char _MSG_VERSION_NOT_SUPPORTED_KEY[] =
     "Handler.snmpIndicationHandler.snmpDeliverTrap_netsnmp."
         "_MSG_VERSION_NOT_SUPPORTED";
 
+static const char _MSG_DES_NOT_SUPPORTED[] =
+    "DES support is disabled in SNMP.";
+static const char _MSG_DES_NOT_SUPPORTED_KEY[] =
+    "Handler.snmpIndicationHandler.snmpDeliverTrap_netsnmp."
+        "_MSG_DES_NOT_SUPPORTED";
+
 static const char _MSG_SESSION_SEND_FAILED[] =
     "Snmp Indication Handler failed to send the trap: ";
 static const char _MSG_SESSION_SEND_FAILED_KEY[] =

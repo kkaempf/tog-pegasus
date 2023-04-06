@@ -247,6 +247,16 @@ void snmpDeliverTrap_netsnmp::_createSession(
 #ifdef PEGASUS_ENABLE_NET_SNMPV3 
         case _SNMPv3_TRAP:
         {
+            if(snmpSecPrivProto == 1)
+            {
+                //DES is no longer supported.
+                PEG_METHOD_EXIT();
+                throw PEGASUS_CIM_EXCEPTION_L(CIM_ERR_NOT_SUPPORTED,
+                    MessageLoaderParms(
+                        _MSG_DES_NOT_SUPPORTED_KEY,
+                        _MSG_DES_NOT_SUPPORTED));
+            }
+
             snmpSession.version = SNMP_VERSION_3;
             CString securityNameCStr = securityName.getCString();
             size_t securityNameLen = strlen(securityNameCStr);
@@ -321,14 +331,7 @@ void snmpDeliverTrap_netsnmp::_createSession(
 
             SNMP_FREE(snmpSession.securityPrivProto);
             //Privacy
-            if(snmpSecPrivProto == 1) //DES
-            {
-                snmpSession.securityPrivProto = snmp_duplicate_objid(
-                    usmDESPrivProtocol,
-                    USM_PRIV_PROTO_DES_LEN);
-                snmpSession.securityPrivProtoLen = USM_PRIV_PROTO_DES_LEN;
-            }
-            else if(snmpSecPrivProto == 2) // AES
+            if(snmpSecPrivProto == 2) // AES
             {
                 snmpSession.securityPrivProto = snmp_duplicate_objid(
                     usmAESPrivProtocol,
