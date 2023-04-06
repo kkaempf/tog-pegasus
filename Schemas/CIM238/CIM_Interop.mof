@@ -57,6 +57,7 @@
 #pragma include ("DMTF/Interop/CIM_ElementConformsToProfile.mof")
 #pragma include ("DMTF/Interop/CIM_ReferencedProfile.mof")
 #pragma include ("DMTF/Interop/CIM_SubProfileRequiresProfile.mof")
+#pragma include ("DMTF/Network/CIM_ProtocolServiceCapabilities.mof")
 #pragma include ("DMTF/Interop/CIM_WBEMProtocolServiceCapabilities.mof")
 #pragma include ("DMTF/Interop/CIM_WSManagementCapabilities.mof")
 #pragma include ("DMTF/Interop/CIM_CIMXMLCapabilities.mof")

@@ -73,5 +73,6 @@
 #pragma include ("DMTF/Event/CIM_IPNetworkSecurityIndication.mof")
 #pragma include ("DMTF/Event/CIM_IPPacketFilterIndication.mof")
 #pragma include ("DMTF/Event/CIM_IndicationService.mof")
+#pragma include ("DMTF/System/CIM_Log.mof")
 #pragma include ("DMTF/Event/CIM_LogOfIndication.mof")
  
