@@ -482,6 +482,13 @@ ifeq ($(RUNTIME_PLATFORM_TEST_NEEDED), true)
 	@$(ECHO-E) "   endif" \
             >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
 
+	@$(ECHO-E) "   ifeq (\044(shell uname -i),ppc64le)" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "      PEGASUS_PLATFORM = LINUX_PPC64_GNU" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+	@$(ECHO-E) "   endif" \
+            >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
+
 	@$(ECHO-E) "   ifeq (\044(shell uname -i),s390)" \
             >> $(PEGASUS_STAGING_DIR)$(PEGASUS_SAMPLES_DIR)/mak/config.mak
 	@$(ECHO-E) "      PEGASUS_PLATFORM = LINUX_ZSERIES_GNU" \
